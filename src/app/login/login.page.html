@@ -1,0 +1,27 @@
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 80vh;">
+    <ion-card style="width: 100%; max-width: 400px;">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <h2>Ingresar</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form (ngSubmit)="onSubmit()">
+          <ion-item mode="md" fill="outline" color="primary">
+            <ion-icon name="key-outline" slot="start"></ion-icon>
+            <ion-label position="floating">Clave única</ion-label>
+            <ion-input type="text" [(ngModel)]="claveUnica" name="claveUnica" required></ion-input>
+          </ion-item>
+          <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">{{ errorMessage }}</div>
+          <div *ngIf="successMessage" style="color: green; margin-top: 10px;">{{ successMessage }}</div>
+          <ion-button expand="block" type="submit" style="margin-top: 16px;">
+            Ingresar
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
