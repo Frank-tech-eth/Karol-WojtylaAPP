@@ -195,4 +195,14 @@ export class ApiService {
     const url = `/api-rut/rut?term=${rutFormateado}`;
     return this.http.get(url, { responseType: 'text' });
   }
+
+  registrarUsuario(nombre: string, usuario: string, password: string) {
+    const url = 'http://localhost/api.php?action=register';
+    return this.http.post<any>(url, { nombre, usuario, password });
+  }
+
+  loginUsuario(usuario: string, password: string) {
+    const url = 'http://localhost/api.php?action=login';
+    return this.http.post<any>(url, { usuario, password });
+  }
 }

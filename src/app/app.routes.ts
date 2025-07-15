@@ -35,6 +35,10 @@ export const routes: Routes = [
     loadComponent: () => import('./datos/datos.page').then( m => m.DatosPage)
   },
   {
+    path: 'registro',
+    loadComponent: () => import('./registro/registro.page').then( m => m.RegistroPage)
+  },
+  {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full',

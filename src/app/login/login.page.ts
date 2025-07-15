@@ -23,6 +23,8 @@ export class LoginPage implements OnInit {
   successMessage = '';
   tipoUsuario: 'paciente' | 'funcionario' = 'paciente';
   datosUsuario: DatosRut | null = null;
+  usuario = '';
+  password = '';
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -31,46 +33,29 @@ export class LoginPage implements OnInit {
   onSubmit() {
     this.errorMessage = '';
     this.successMessage = '';
-    if (!this.claveUnica) {
-      this.errorMessage = 'Por favor, ingresa tu clave única.';
+    if (!this.usuario || !this.password) {
+      this.errorMessage = 'Por favor, ingresa usuario y contraseña.';
       return;
     }
-    // Redirigir siempre a inicio para pruebas
-    this.router.navigate(['/inicio']);
-    // Si quieres volver a la lógica de API, descomenta el código original abajo
-    /*
-    this.successMessage = 'Verificando RUT...';
-    this.apiService.obtenerDatosRut(this.claveUnica).subscribe({
-      next: (html: string) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const table = doc.querySelector('table');
-        if (table) {
-          const tds = table.querySelectorAll('tbody td');
-          if (tds.length >= 5) {
-            this.datosUsuario = {
-              nombre: tds[0].textContent || '',
-              rut: tds[1].textContent || '',
-              genero: tds[2].textContent || '',
-              direccion: tds[3].textContent || '',
-              ciudad: tds[4].textContent || ''
-            };
-            localStorage.setItem('datosUsuario', JSON.stringify(this.datosUsuario));
-            this.successMessage = '¡Ingreso exitoso!';
-            setTimeout(() => {
-              this.router.navigate(['/inicio']);
-            }, 500);
-            return;
-          }
+    this.apiService.loginUsuario(this.usuario, this.password).subscribe({
+      next: (resp) => {
+        if (resp.success) {
+          localStorage.setItem('datosUsuario', JSON.stringify({ nombre: resp.nombre }));
+          this.successMessage = '¡Bienvenido, ' + resp.nombre + '!';
+          setTimeout(() => {
+            this.router.navigate(['/inicio']);
+          }, 700);
+        } else {
+          this.errorMessage = resp.error || 'Usuario o contraseña incorrectos.';
         }
-        this.errorMessage = 'RUT no encontrado o formato incorrecto.';
-        this.successMessage = '';
       },
       error: () => {
-        this.errorMessage = 'Error al consultar el RUT.';
-        this.successMessage = '';
+        this.errorMessage = 'Error de conexión con la API.';
       }
     });
-    */
+  }
+
+  irARegistro() {
+    this.router.navigate(['/registro']);
   }
 }
