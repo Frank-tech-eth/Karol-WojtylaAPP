@@ -1,0 +1,89 @@
+.recetas-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recetas-container h2 {
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.receta-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 1rem;
+}
+
+ion-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+ion-card:hover {
+  transform: translateY(-2px);
+}
+
+ion-card-title {
+  color: #4a90e2;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+ion-card-subtitle {
+  color: #666;
+  font-weight: 500;
+}
+
+.receta-info {
+  margin: 1rem 0;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-row ion-icon {
+  color: #4a90e2;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.info-row span {
+  color: #333;
+  font-weight: 500;
+}
+
+.descargar-button {
+  margin-top: 1rem;
+  --border-color: #4caf50;
+  --color: #4caf50;
+  font-weight: 600;
+}
+
+.descargar-button:hover {
+  --background: #4caf50;
+  --color: white;
+}
+
+.no-recetas {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.no-recetas-icon {
+  font-size: 4rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.no-recetas p {
+  font-size: 1.1rem;
+  margin: 0;
+}

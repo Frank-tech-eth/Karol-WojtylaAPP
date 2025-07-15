@@ -14,13 +14,13 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button">
+          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarACitas()">
             <ion-icon name="calendar-outline" slot="start"></ion-icon>
             Citas Pendientes
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button">
+          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarAAgendamiento()">
             <ion-icon name="time-outline" slot="start"></ion-icon>
             Agendamiento de Hora
           </ion-button>
@@ -28,13 +28,13 @@
       </ion-row>
       <ion-row>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button">
+          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarAInterconsultas()">
             <ion-icon name="people-outline" slot="start"></ion-icon>
             Interconsultas
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button">
+          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarARecetas()">
             <ion-icon name="medical-outline" slot="start"></ion-icon>
             Recetas
           </ion-button>
@@ -42,13 +42,13 @@
       </ion-row>
       <ion-row>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button">
+          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarADatos()">
             <ion-icon name="person-outline" slot="start"></ion-icon>
             Datos
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button logout-button">
+          <ion-button expand="block" fill="outline" class="menu-button logout-button" (click)="cerrarSesion()">
             <ion-icon name="log-out-outline" slot="start"></ion-icon>
             Cerrar Sesión
           </ion-button>

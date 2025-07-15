@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agendamiento de Hora</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="agendamiento-container">
+    <h2>Profesionales Disponibles</h2>
+    
+    <ion-list>
+      <ion-item *ngFor="let profesional of profesionales" class="profesional-item">
+        <ion-card style="width: 100%;">
+          <ion-card-header>
+            <ion-card-title>{{ profesional.nombre }}</ion-card-title>
+            <ion-card-subtitle>{{ profesional.especialidad }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="horarios-info">
+              <h4>Horarios Disponibles:</h4>
+              <div class="horarios-grid">
+                <ion-chip *ngFor="let horario of profesional.horarios" color="primary" outline="true">
+                  {{ horario }}
+                </ion-chip>
+              </div>
+            </div>
+            <ion-button expand="block" fill="outline" class="agendar-button">
+              <ion-icon name="calendar-outline" slot="start"></ion-icon>
+              Agendar Cita
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

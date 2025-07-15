@@ -1,0 +1,73 @@
+.agendamiento-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.agendamiento-container h2 {
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.profesional-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 1rem;
+}
+
+ion-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+ion-card:hover {
+  transform: translateY(-2px);
+}
+
+ion-card-title {
+  color: #4a90e2;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+ion-card-subtitle {
+  color: #666;
+  font-weight: 500;
+}
+
+.horarios-info {
+  margin: 1rem 0;
+}
+
+.horarios-info h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.horarios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+ion-chip {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.agendar-button {
+  margin-top: 1rem;
+  --border-color: #4a90e2;
+  --color: #4a90e2;
+  font-weight: 600;
+}
+
+.agendar-button:hover {
+  --background: #4a90e2;
+  --color: white;
+}

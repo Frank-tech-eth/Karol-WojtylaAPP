@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Interconsultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="interconsultas-container">
+    <h2>Mis Interconsultas</h2>
+    
+    <ion-list>
+      <ion-item *ngFor="let interconsulta of interconsultas" class="interconsulta-item">
+        <ion-card style="width: 100%;">
+          <ion-card-header>
+            <ion-card-title>{{ interconsulta.profesional.nombre }}</ion-card-title>
+            <ion-card-subtitle>{{ interconsulta.especialidad }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="interconsulta-info">
+              <div class="info-row">
+                <ion-icon name="medical-outline"></ion-icon>
+                <span>{{ interconsulta.hospital }}</span>
+              </div>
+              <div class="info-row">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>{{ interconsulta.fecha | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="interconsultas.length === 0" class="no-interconsultas">
+      <ion-icon name="people-outline" class="no-interconsultas-icon"></ion-icon>
+      <p>No tienes interconsultas programadas</p>
+    </div>
+  </div>
+</ion-content>

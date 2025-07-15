@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Citas Pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="citas-container">
+    <h2>Mis Citas Programadas</h2>
+    
+    <ion-list>
+      <ion-item *ngFor="let cita of citas" class="cita-item">
+        <ion-card style="width: 100%;">
+          <ion-card-header>
+            <ion-card-title>{{ cita.profesional.nombre }}</ion-card-title>
+            <ion-card-subtitle>{{ cita.especialidad }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="cita-info">
+              <div class="info-row">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>{{ cita.fecha | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="info-row">
+                <ion-icon name="time-outline"></ion-icon>
+                <span>{{ cita.hora }}</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="citas.length === 0" class="no-citas">
+      <ion-icon name="calendar-outline" class="no-citas-icon"></ion-icon>
+      <p>No tienes citas programadas</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="recetas-container">
+    <h2>Mis Recetas</h2>
+    
+    <ion-list>
+      <ion-item *ngFor="let receta of recetas" class="receta-item">
+        <ion-card style="width: 100%;">
+          <ion-card-header>
+            <ion-card-title>{{ receta.profesional }}</ion-card-title>
+            <ion-card-subtitle>{{ receta.especialidad }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="receta-info">
+              <div class="info-row">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>{{ receta.fecha | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="info-row">
+                <ion-icon name="document-outline"></ion-icon>
+                <span>{{ receta.archivo }}</span>
+              </div>
+            </div>
+            <ion-button expand="block" fill="outline" class="descargar-button" (click)="descargarReceta(receta)">
+              <ion-icon name="download-outline" slot="start"></ion-icon>
+              Descargar PDF
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="recetas.length === 0" class="no-recetas">
+      <ion-icon name="medical-outline" class="no-recetas-icon"></ion-icon>
+      <p>No tienes recetas disponibles</p>
+    </div>
+  </div>
+</ion-content>
