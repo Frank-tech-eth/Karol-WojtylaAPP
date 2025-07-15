@@ -22,7 +22,7 @@
             <div class="horarios-info">
               <h4>Horarios Disponibles:</h4>
               <div class="horarios-grid">
-                <ion-chip *ngFor="let horario of profesional.horarios" color="primary" outline="true">
+                <ion-chip *ngFor="let horario of profesional.horarios" color="primary" outline="true" (click)="agendarCita(profesional, horario)">
                   {{ horario }}
                 </ion-chip>
               </div>

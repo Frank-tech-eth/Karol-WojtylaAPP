@@ -1,0 +1,10 @@
+{
+  "/api-rut": {
+    "target": "https://www.nombrerutyfirma.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api-rut": ""
+    }
+  }
+} 

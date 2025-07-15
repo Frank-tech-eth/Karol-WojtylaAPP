@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -30,6 +31,14 @@ export interface Receta {
   profesional: string;
   especialidad: string;
   archivo: string;
+}
+
+export interface DatosRut {
+  nombre: string;
+  rut: string;
+  genero: string;
+  direccion: string;
+  ciudad: string;
 }
 
 @Injectable({
@@ -135,7 +144,7 @@ export class ApiService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getProfesionales(): Observable<Profesional[]> {
     return of(this.profesionales);
@@ -153,10 +162,37 @@ export class ApiService {
     return of(this.recetas);
   }
 
+  addCita(cita: Cita) {
+    cita.id = this.citas.length > 0 ? Math.max(...this.citas.map(c => c.id)) + 1 : 1;
+    this.citas.push(cita);
+  }
+
   descargarReceta(receta: Receta): void {
     // Simular descarga de PDF
     console.log(`Descargando: ${receta.archivo}`);
     // Aquí iría la lógica real de descarga
     alert(`Descargando ${receta.archivo}`);
+  }
+
+  formatoRut(rut: string): string {
+    if (rut.length >= 8) {
+      let rutsdv = '';
+      let dv = '';
+      if (rut.includes('-')) {
+        [rutsdv, dv] = rut.split('-');
+      } else {
+        rutsdv = rut.slice(0, -1);
+        dv = rut.slice(-1);
+      }
+      const newrut = Number(rutsdv).toLocaleString('es-CL').replace(/,/g, '.');
+      return `${newrut}-${dv}`;
+    }
+    return '';
+  }
+
+  obtenerDatosRut(rut: string) {
+    const rutFormateado = this.formatoRut(rut);
+    const url = `/api-rut/rut?term=${rutFormateado}`;
+    return this.http.get(url, { responseType: 'text' });
   }
 }

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card *ngIf="datos">
+    <ion-card-content>
+      <h2 style="margin-bottom: 1rem;">Datos Personales</h2>
+      <div><strong>Nombre:</strong> {{ datos.nombre }}</div>
+      <div><strong>RUT:</strong> {{ datos.rut }}</div>
+      <div><strong>Género:</strong> {{ datos.genero }}</div>
+      <div><strong>Dirección:</strong> {{ datos.direccion }}</div>
+      <div><strong>Ciudad:</strong> {{ datos.ciudad }}</div>
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="!datos" style="text-align:center; margin-top:2rem; color:#888;">No hay datos disponibles.</div>
+  <ion-button expand="block" (click)="volver()" style="margin-top: 2rem;">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Volver al inicio
+  </ion-button>
+</ion-content> 

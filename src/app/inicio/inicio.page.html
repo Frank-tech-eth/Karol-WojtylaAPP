@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="welcome-section">
-    <h1>¡Bienvenido!</h1>
+    <h1>¡Bienvenido{{ nombreUsuario ? ', ' + nombreUsuario : '' }}!</h1>
     <p>Selecciona una opción del menú principal</p>
   </div>
 
@@ -14,13 +14,13 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarACitas()">
+          <ion-button expand="block" fill="outline" class="menu-button" [routerLink]="['/citas']">
             <ion-icon name="calendar-outline" slot="start"></ion-icon>
             Citas Pendientes
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarAAgendamiento()">
+          <ion-button expand="block" fill="outline" class="menu-button" [routerLink]="['/agendamiento']">
             <ion-icon name="time-outline" slot="start"></ion-icon>
             Agendamiento de Hora
           </ion-button>
@@ -28,13 +28,13 @@
       </ion-row>
       <ion-row>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarAInterconsultas()">
+          <ion-button expand="block" fill="outline" class="menu-button" [routerLink]="['/interconsultas']">
             <ion-icon name="people-outline" slot="start"></ion-icon>
             Interconsultas
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarARecetas()">
+          <ion-button expand="block" fill="outline" class="menu-button" [routerLink]="['/recetas']">
             <ion-icon name="medical-outline" slot="start"></ion-icon>
             Recetas
           </ion-button>
@@ -42,7 +42,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="6">
-          <ion-button expand="block" fill="outline" class="menu-button" (click)="navegarADatos()">
+          <ion-button expand="block" fill="outline" class="menu-button" [routerLink]="['/datos']">
             <ion-icon name="person-outline" slot="start"></ion-icon>
             Datos
           </ion-button>
@@ -60,11 +60,20 @@
   <div class="contact-section">
     <ion-card>
       <ion-card-content>
-        <div class="contact-item">
-          <ion-icon name="call-outline" class="contact-icon"></ion-icon>
-          <div class="contact-info">
-            <h3>Mesa Central</h3>
-            <p>500 300 399</p>
+        <div class="contact-item" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center;">
+            <ion-icon name="call-outline" class="contact-icon"></ion-icon>
+            <div class="contact-info">
+              <h3>Mesa Central</h3>
+              <p>+600 300 499</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <ion-icon name="alert-circle-outline" style="font-size:1.5rem; color:#ff5252;"></ion-icon>
+            <span style="font-size:1.1rem; font-weight:600; color:#ff5252;">Reclamos: {{ numeroReclamos }}</span>
+            <ion-button fill="clear" color="danger" size="small" (click)="registrarReclamo()">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
           </div>
         </div>
         <div class="contact-item">
