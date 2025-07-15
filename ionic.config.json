@@ -1,0 +1,7 @@
+{
+  "name": "Karol-WojtylaAPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
