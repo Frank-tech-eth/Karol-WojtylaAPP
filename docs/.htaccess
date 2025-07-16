@@ -1,0 +1,15 @@
+# Force correct MIME types for JavaScript files
+<FilesMatch "\.js$">
+    Header set Content-Type "application/javascript"
+</FilesMatch>
+
+# Force correct MIME types for CSS files
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css"
+</FilesMatch>
+
+# Disable X-Content-Type-Options for GitHub Pages
+Header unset X-Content-Type-Options
+
+# Enable CORS for all files
+Header always set Access-Control-Allow-Origin "*" 
